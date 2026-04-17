@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="icon"  href ="{%  static 'icon.png' %}"  type = "image.png">
+    <meta charset="UTF-8">
+    <title>Менеджер</title>
+</head>
+<body>
+{% for message in messages %}
+{% if message %}
+{{ message }}
+{% endif %}
+{% endfor %}
+<a href=" {%  url 'show_guest' %}">Гостевая</a>
+<a href=" {%  url 'show_admin' %}">Админ</a>
+<form method="get">
+    <div>
+        <label>Поиск:</label>
+        <input type="text" name="search_user" placeholder="Поиск по имени">
+    </div>
+    <div>
+        <label>Фильтрация:</label>
+        <select>
+            <option value="">Все должности </option>
+            <option value="{{ position.name }}"> {% if position__name == position.name %} selected {% endif %}</option>
+        </select>
+    </div>
+<button type="submit"> Применить</button>
+</form>
+
+
+<table >
+    <tr style="clor:blue;">
+        <th>Фио сотрудника</th>
+        <th>Серия паспорта</th>
+        <th>Номер паспорта</th>
+        <th>Адрес проживания</th>
+        <th>Компания</th>
+        <th>Должность</th>
+        <th>Дата начала работы</th>
+    </tr>
+    {% for user in users %}
+     <tr>
+        <th>{{ user.employee_fio}}</th>
+        <th>{{ user.passport_series.name}}</th>
+        <th>{{ user.passport_number}}</th>
+        <th>{{ user.address}}</th>
+        <th>{{ user.company_name.name}}</th>
+        <th>{{ user.position.name}}</th>
+        <th>{{ user.start_date}}</th>
+    </tr>
+    {% empty %}
+    <tr>
+        <th>Ничео нет</th>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="icon"  href ="{%  static 'icon.png' %}"  type = "image.png">
+    <meta charset="UTF-8">
+    <title>Редактирование менеджером</title>
+</head>
+<body>
+
+{% for message in messages %}
+{% if message %}
+{{ message }}
+{% endif %}
+{% endfor %}
+<body>
+
+</body>
+</html>

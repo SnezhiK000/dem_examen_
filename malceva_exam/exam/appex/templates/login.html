@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="icon"  href ="{%  static 'icon.png' %}"  type = "image.png">
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
+{% for message in messages %}
+{% if message %}
+{{ message }}
+{% endif %}
+{% endfor %}
+<a href=" {%  url 'show_guest' %}">Гостевая</a>
+<a href=" {%  url 'show_admin' %}">Админ</a>
+<a href=" {%  url 'show_manager' %}">Менеджер</a>
+
+<form method="POST" style=" color:blue;">
+    {% csrf_token %}
+    <div>
+        <label>Введите логин:</label>
+        <input type="text" placeholder="Введите логин" name="username">
+    </div>
+    <div>
+        <label>Введите Пароль:</label>
+        <input type="text" placeholder="Введите пароль" name="username">
+    </div>
+    <button type="submit">Войти</button>
+</form>
+</body>
+</html>

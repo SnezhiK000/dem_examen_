@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="icon"  href ="{%  static 'icon.png' %}"  type = "image.png">
+    <meta charset="UTF-8">
+    <title>Гостевая</title>
+</head>
+<a href=" {%  url 'show_guest' %}">Гостевая</a>
+<a href=" {%  url 'login_view' %}">Выход</a>
+<a href=" {%  url 'show_manager' %}">Менеджер</a>
+<a href=" {%  url 'login_view' %}">Админ</a>
+<body>
+{% for message in messages %}
+{% if message %}
+{{ message }}
+{% endif %}
+{% endfor %}
+<h1>Здвесь ничего нет для обычных пользователей</h1>
+</body>
+</html>
